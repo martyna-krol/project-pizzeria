@@ -86,7 +86,7 @@
     // CODE ADDED END
   };
 
-  class AmountWidget{
+  class AmountWidget {
     constructor(element){
       const thisWidget = this;
 
@@ -118,7 +118,10 @@
 
       thisWidget.value = settings.amountWidget.defaultValue;
 
-      if(thisWidget.value !== newValue && !isNaN(newValue) && value <= settings.amountWidget.defaultMax && value >= settings.amountWidget.defaultMin){
+      if(thisWidget.value !== newValue 
+      && !isNaN(newValue) 
+      && value <= settings.amountWidget.defaultMax 
+      && value >= settings.amountWidget.defaultMin){
         thisWidget.value = newValue;
       }
       thisWidget.input.value = thisWidget.value;
@@ -325,12 +328,12 @@
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
           if (formData[paramId] && formData[paramId].includes(optionId)){
-            if (option.default !== 'true'){
-              price = price + option.price;
+            if (option.default !== true){
+              price += option.price;
             }
           } else {
-            if (option.default == 'true'){
-              price = price - option.price;
+            if (option.default == true){
+              price -= option.price;
             }       
           }
           const productImages = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
@@ -369,6 +372,8 @@
         price: thisProduct.amount * thisProduct.priceSingle,
         params: {},
       };
+
+      console.log(productSummary);
 
       return;
     }
