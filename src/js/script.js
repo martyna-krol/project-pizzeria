@@ -161,6 +161,7 @@
 
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
     }
 
     initActions(){
@@ -176,7 +177,16 @@
     }
 
     add(menuProduct){
-      // const thisCart = this;
+      const thisCart = this;
+      
+      /* generate HTML based on template */
+      const generatedHTML = templates.cartProduct(menuProduct);
+
+      /* create element using utils.createElementFromHTML */
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+
+      /* add element to menu */
+      thisCart.dom.productList.appendChild(generatedDOM);
 
       console.log('adding product', menuProduct);
     }
@@ -377,7 +387,7 @@
 
       console.log(productSummary);
 
-      return;
+      return productSummary;
     }
 
     prepareCartProductParams() {
@@ -402,8 +412,8 @@
           const option = param.options[optionId];
           if (formData[paramId] && formData[paramId].includes(optionId)){
             params[paramId].options = {
-              optionId: option.label, // nie wiem co tu wpisać, żeby optionId nie wyswietlalo sie jako 'optionId'
-              // w console logu pokazuje mi tylko jeden skłądnik a nie wszystkie zaznaczone
+              optionId: option.label, 
+              // w console logu pokazuje mi tylko jeden składnik a nie wszystkie zaznaczone
             };
           }
         }
