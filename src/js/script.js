@@ -331,7 +331,7 @@
         /* if there is active product and it's not thisProduct.element, remove class active from it */
         for(let activeProduct of activeProducts){
           if(activeProduct !== thisProduct.element){
-            thisProduct.element.classList.remove(classNames.menuProduct.wrapperActive);
+            activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
           }
         }
 
