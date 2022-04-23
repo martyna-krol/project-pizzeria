@@ -221,14 +221,13 @@
       thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
     }
 
-    initAmountWidget(){ // nie działa
+    initAmountWidget(){
       const thisCartProduct = this;
       thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
       thisCartProduct.dom.amountWidget.addEventListener('updated', function() {
         thisCartProduct.amount = thisCartProduct.amountWidget.value;
         thisCartProduct.price = thisCartProduct.amount * thisCartProduct.priceSingle;
-        thisCartProduct.dom.price = thisCartProduct.price; // coś źle
-
+        thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
       });
     }
 
