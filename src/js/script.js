@@ -125,10 +125,11 @@
 
       thisWidget.value = settings.amountWidget.defaultValue;
 
-      if(thisWidget.value !== newValue 
-      && !isNaN(newValue) 
-      && newValue <= settings.amountWidget.defaultMax 
-      && newValue >= settings.amountWidget.defaultMin){
+      if(thisWidget.value !== newValue &&
+      !isNaN(newValue) &&
+      newValue <= settings.amountWidget.defaultMax &&
+      newValue >= settings.amountWidget.defaultMin
+      ){
         thisWidget.value = newValue;
       }
       thisWidget.input.value = thisWidget.value;
@@ -326,7 +327,7 @@
           console.log('parsedResponse', parsedResponse);
 
           /* save parsedResponse as thisApp.data.products */
-          parsedResponse = thisApp.data.products;
+          thisApp.data.products = parsedResponse;
           /* execute initMenu method */
           thisApp.initMenu();
         });
