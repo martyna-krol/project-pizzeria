@@ -511,8 +511,6 @@
         params: thisProduct.prepareCartProductParams(),
       };
 
-      console.log(productSummary);
-
       return productSummary;
     }
 
@@ -537,10 +535,7 @@
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
           if (formData[paramId] && formData[paramId].includes(optionId)){
-            params[paramId].options = {
-              optionId: option.label, 
-              // w console logu pokazuje mi tylko jeden składnik a nie wszystkie zaznaczone
-            };
+            params[paramId].options[optionId] = option.label;
           }
         }
       }
