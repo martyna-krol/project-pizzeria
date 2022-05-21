@@ -120,7 +120,7 @@ class Product{
             price += option.price;
           }
         } else {
-          if (option.default == true){
+          if (option.default){
             price -= option.price;
           }       
         }

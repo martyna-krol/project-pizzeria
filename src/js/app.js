@@ -27,9 +27,12 @@ const app = {
         thisApp.data.products = parsedResponse;
         /* execute initMenu method */
         thisApp.initMenu();
+      })
+      .catch(error => {
+        alert('Page not found!');
+        throw(error);
       });
-
-    console.log('thisApp.data', JSON.stringify(thisApp.data));
+      
   },
 
   initCart: function(){
