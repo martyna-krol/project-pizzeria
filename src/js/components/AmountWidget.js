@@ -11,15 +11,6 @@ class AmountWidget extends BaseWidget{
     thisWidget.initActions();
   }
 
-  announce(){
-    const thisWidget = this;
-  
-    const event = new CustomEvent('updated', {
-      bubbles: true
-    });
-    thisWidget.dom.wrapper.dispatchEvent(event);
-  }
-
   getElements(){
     const thisWidget = this;
 
@@ -28,28 +19,15 @@ class AmountWidget extends BaseWidget{
     thisWidget.dom.linkIncrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);
   }
 
-  setValue(value){
-    const thisWidget = this;
-      
-    const newValue = parseInt(value);
-
-    if(thisWidget.value !== newValue &&
-      !isNaN(newValue) &&
-      newValue <= settings.amountWidget.defaultMax &&
-      newValue >= settings.amountWidget.defaultMin
-    ){
-      thisWidget.value = newValue;
-    }
-    thisWidget.dom.input.value = thisWidget.value;
-    thisWidget.announce();
-  }
-
-  parseValue(value){
-
-  }
-
   isValid(value){
-    
+    return !isNaN(value) &&
+    value <= settings.amountWidget.defaultMax &&
+    value >= settings.amountWidget.defaultMin;
+  }
+
+  renderValue(){
+    const thisWidget = this;
+    thisWidget.dom.input.value = thisWidget.value;
   }
 
   initActions(){
