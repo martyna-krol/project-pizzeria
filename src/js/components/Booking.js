@@ -6,6 +6,7 @@ import utils from '../utils.js';
 
 class Booking {
   constructor(element) {
+    // let activeTable = 0;
     this.render(element);
     this.initWidgets();
     this.getData();
@@ -83,7 +84,6 @@ class Booking {
         }
       }
     }
-    console.log(thisBooking.booked);
     thisBooking.updateDOM();
   }
 
@@ -139,8 +139,36 @@ class Booking {
       } else {
         table.classList.remove(classNames.booking.tableBooked);
       }
+
+      if(table.classList.contains(classNames.booking.tableActive)){
+        table.classList.remove(classNames.booking.tableActive);
+      }
     }
-    
+  }
+
+  initTables(event){
+    const thisBooking = this;
+    if (event.target.classList.contains('table')) {
+      // const tableId = event.target.getAttribute(settings.booking.tableIdAttribute);
+      
+      if (event.target.classList.contains(classNames.booking.tableBooked)) {
+        alert('Stolik jest zajęty! Wybierz inny');
+      } else {
+        if (!event.target.classList.contains(classNames.booking.tableActive)) {
+          for(let table of thisBooking.dom.tables){
+
+            if(table.classList.contains(classNames.booking.tableActive)){
+              table.classList.remove(classNames.booking.tableActive);
+            }
+          }
+          event.target.classList.add(classNames.booking.tableActive);
+          // activeTable = tableId;
+        } else {
+          event.target.classList.remove(classNames.booking.tableActive);
+          // activeTable = 0;
+        }
+      }
+    }
   }
 
   render(element){
@@ -154,6 +182,7 @@ class Booking {
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector(select.containerOf.floorPlan);
   }
 
   initWidgets(){
@@ -165,6 +194,10 @@ class Booking {
 
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
+    });
+
+    thisBooking.dom.floorPlan.addEventListener('click', function (event) {
+      thisBooking.initTables(event);
     });
     // thisBooking.dom.peopleAmount.addEventListener('updated', function() {});
     // thisBooking.dom.hoursAmount.addEventListener('updated', function() {});
