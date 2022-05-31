@@ -6,7 +6,7 @@ import utils from '../utils.js';
 
 class Booking {
   constructor(element) {
-    // let activeTable = 0;
+    this.activeTable = 0;
     this.render(element);
     this.initWidgets();
     this.getData();
@@ -149,7 +149,7 @@ class Booking {
   initTables(event){
     const thisBooking = this;
     if (event.target.classList.contains('table')) {
-      // const tableId = event.target.getAttribute(settings.booking.tableIdAttribute);
+      const tableId = event.target.getAttribute(settings.booking.tableIdAttribute);
       
       if (event.target.classList.contains(classNames.booking.tableBooked)) {
         alert('Stolik jest zajęty! Wybierz inny');
@@ -162,10 +162,10 @@ class Booking {
             }
           }
           event.target.classList.add(classNames.booking.tableActive);
-          // activeTable = tableId;
+          thisBooking.activeTable = parseInt(tableId, 10);
         } else {
           event.target.classList.remove(classNames.booking.tableActive);
-          // activeTable = 0;
+          thisBooking.activeTable = 0;
         }
       }
     }
@@ -177,13 +177,15 @@ class Booking {
     const payload = {
       date: thisBooking.datePicker.value,
       hour: thisBooking.hourPicker.value,
-      // table: thisBooking.tableId,
+      table: thisBooking.activeTable,
       duration: thisBooking.hoursAmount.value,
       ppl: thisBooking.peopleAmount.value,
       starters: thisBooking.starters,
       phone: thisBooking.dom.phone.value,
       address: thisBooking.dom.address.value,
     };
+
+    console.log(payload);
 
 
       
@@ -203,7 +205,7 @@ class Booking {
         console.log('parsedResponse', parsedResponse);
       });
 
-    thisBooking.makeBooked(thisBooking.datePicker.value, thisBooking.hourPicker.value, thisBooking.hoursAmount.value, thisBooking.tableId);
+    thisBooking.makeBooked(thisBooking.datePicker.value, thisBooking.hourPicker.value, thisBooking.hoursAmount.value, thisBooking.activeTable);
 
   }
 
