@@ -184,10 +184,6 @@ class Booking {
       phone: thisBooking.dom.phone.value,
       address: thisBooking.dom.address.value,
     };
-
-    console.log(payload);
-
-
       
     const options = { 
       method: 'POST',
