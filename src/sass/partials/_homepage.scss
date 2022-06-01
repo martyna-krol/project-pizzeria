@@ -1,71 +1,118 @@
 #pages {
-    >* {
-      display: none;
-    }
+  >* {
+    display: none;
+  }
+
+  >.active {
+    display: block;
+  }
+}
+
+.homepage-widget {
+  transform: opacity 500ms;
+
+  &.loading {
+    opacity: 0.25;
+  }
+}
+
+.home-wrapper {
+  margin: ($base-size * 3.5) auto;
+  padding: ($base-size * 6) ($base-size * 4);
+  background: $color-light;
+  border-bottom: 1px solid lighten($color-dark, 70%);
+  border-radius: $radius;
+}
+
+.row {
+  display: flex;
+  flex: 0 0 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  text-align: center;
+  border: 5px solid $color-light;
+  border-radius: 10px;
+  height: 150px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.box-1 {
+  background-image: url("https://i.postimg.cc/bJWz0jWp/pizza-1.jpg");
+}
+
+.box-2 {
+  background-image: url("https://i.postimg.cc/WbPVsSPW/pizza-2.jpg");
+}
+
+.col {
+  width: 100%;
+  background-color: $color-main;
+  color: $color-light;
   
-    >.active {
-      display: block;
-    }
-  }
-  
-  .homepage-widget {
-    transform: opacity 500ms;
-  
-    &.loading {
-      opacity: 0.25;
-    }
-  }
-  
-  .home-wrapper {
-    margin: ($base-size * 3.5) auto;
-    padding: ($base-size * 6) ($base-size * 4);
-    background: $color-light;
-    border-bottom: 1px solid lighten($color-dark, 70%);
-    border-radius: $radius;
-  }
+}
 
-  .row {
-      display: flex;
-      flex: 0 0 100%;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-  }
+.col-6 {
+  width: 50%;
+  background-color: $color-dark;
+  color: $color-light;
+}
 
-  .box {
-    text-align: center;
-    border: 5px solid $color-light;
-    border-radius: 10px;
-    height: 150px;
-  }
+.opening {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 40px;
+}
 
-  .col {
-      width: 100%;
-      background-color: $color-main;
-      color: $color-light;
-  }
+.invisible {
+  display: none;
+}
 
-  .col-6 {
-      width: 50%;
-      background-color: $color-dark;
-      color: $color-light;
-      line-height: 100px;
-  }
+.box a {
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
+  color: $color-light;
+  position: absolute;
+  transition: $transition;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 
-  a {
-      text-decoration: none;
-      color: $color-light;
-  }
+.box a:hover {
+  transform: translate(-50%, -70%);
+  color: $color-main;
+  transition: $transition;
+}
 
-  h1 {
-      font-family: $font-header;
-      text-transform: uppercase;
-      font-size: 2em;
-  }
+.box a:hover + .invisible { // nie działa
+  display: inline-block;
+}
 
-  h2 {
-    font-family: $font-text;
-    text-transform: uppercase;
-    font-size: 1em;
-    font-weight: $font-light;
-    }
+h1 {
+  font-family: $font-header;
+  text-transform: uppercase;
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-family: $font-text;
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: $font-light;
+  margin: 0;
+}
+
