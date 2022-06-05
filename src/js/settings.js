@@ -52,7 +52,7 @@ export const select = {
     address: '[name="address"]',
   },
   nav: {
-    links: '.main-nav a',
+    links: '.main-nav a, .home-nav a',
   },
   cart: {
     productList: '.cart__order-summary',

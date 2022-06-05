@@ -119,6 +119,8 @@ const app = {
     const homepageElem = document.querySelector(select.containerOf.homepage);
     thisApp.homepage = new Homepage(homepageElem);
 
+    thisApp.initPages();
+
   },
 
   init: function(){

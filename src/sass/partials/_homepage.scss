@@ -76,6 +76,12 @@
 
 .invisible {
   display: none;
+  transition: $transition;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
 }
 
 .box a {
@@ -96,8 +102,9 @@
   transition: $transition;
 }
 
-.box a:hover + .invisible { // nie działa
+.box a:hover + .invisible {
   display: inline-block;
+  transition: $transition;
 }
 
 h1 {
