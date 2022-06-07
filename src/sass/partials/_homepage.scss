@@ -75,7 +75,7 @@
 }
 
 .invisible {
-  display: none;
+  opacity: 0;
   transition: $transition;
   position: absolute;
   left: 50%;
@@ -103,7 +103,7 @@
 }
 
 .box a:hover + .invisible {
-  display: inline-block;
+  opacity: 1;
   transition: $transition;
 }
 
@@ -135,11 +135,12 @@ h2 {
   width: 40%;
 }
 
-.carousel-img {
-  width: 200px;
-  height: 200px;
+.image {
+  width: 190px;
+  height: 190px;
   border-radius: 10px;
   object-fit: cover;
+  position: relative;
 }
 
 .cell-text {
@@ -154,3 +155,56 @@ h2 {
 .cell-author {
   font-style: italic;
 }
+
+.col-4 {
+  width: 30%;
+  margin: 5px 10px;
+  position: relative;
+  transition: $transition;
+}
+
+.col-4:hover .gallery-img{
+  filter: brightness(40%);
+  transition: $transition;
+}
+
+.fas {
+  margin: 5px;
+}
+
+.icons {
+  position: absolute;
+  transition: $transition;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: $color-light;
+  opacity: 0;
+  font-size: 1em;
+  display: inline-block;
+}
+
+.col-4:hover .icons {
+  transition: $transition;
+  font-size: 1.8em;
+  opacity: 1;
+}
+
+.fa-heart {
+  transition: $transition;
+}
+
+.fa-heart:hover {
+  transition: $transition;
+  color: $color-danger;
+}
+
+.fa-share-alt {
+  transition: $transition;
+}
+
+.fa-share-alt:hover {
+  transition: $transition;
+  color: $color-main;
+}
+
