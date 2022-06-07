@@ -123,3 +123,34 @@ h2 {
   margin: 0;
 }
 
+.main-carousel {
+  margin: 100px 10px;
+}
+
+.carousel-cell {
+  display: flex;
+}
+
+.cell-image {
+  width: 40%;
+}
+
+.carousel-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.cell-text {
+  width: 60%;
+}
+
+.cell-header {
+  text-transform: uppercase;
+  font-weight: $font-bold;
+}
+
+.cell-author {
+  font-style: italic;
+}

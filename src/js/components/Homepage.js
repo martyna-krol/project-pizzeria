@@ -1,5 +1,5 @@
 import {templates, select} from '../settings.js';
-import Carousel from './Carousel.js';
+// import Carousel from './Carousel.js';
 
 class Homepage {
   constructor(element){
@@ -27,8 +27,13 @@ class Homepage {
     var flkty = new Flickity(carouselElem, {
       // options
       cellAlign: 'left',
-      contain: true
+      contain: true,
+      autoPlay: true,
+      wrapAround: true,
+      prevNextButtons: false
     });
+
+    console.log(flkty);
   }
 }
 
